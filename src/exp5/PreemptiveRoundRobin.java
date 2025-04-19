@@ -1,8 +1,10 @@
+package exp5;
+
 import java.util.*;
 
 //assuming arival time as 0
 class Processs {
-    int pid;          // Process ID
+    int pid;          // exp5.Process ID
     int burstTime;    // Burst time
     int remainingTime; // Remaining burst time
     int waitingTime;  // Waiting Time
@@ -31,7 +33,7 @@ public class PreemptiveRoundRobin {
 
         // Input burst time for each process
         for (int i = 0; i < n; i++) {
-            System.out.print("Enter burst time for Process " + (i + 1) + ": ");
+            System.out.print("Enter burst time for exp5.Process " + (i + 1) + ": ");
             int bt = sc.nextInt();
             processes[i] = new Processs(i + 1, bt);
         }
@@ -50,11 +52,11 @@ public class PreemptiveRoundRobin {
 
             // If remaining time is less than or equal to quantum, process will finish
             if (currentProcess.remainingTime <= quantum) {
-                time += currentProcess.remainingTime; // Process finishes execution
+                time += currentProcess.remainingTime; // exp5.Process finishes execution
                 currentProcess.turnaroundTime = time; // Turnaround time = completion time for RR
                 currentProcess.waitingTime = currentProcess.turnaroundTime - currentProcess.burstTime;
             } else {
-                // Process does not finish in this quantum
+                // exp5.Process does not finish in this quantum
                 time += quantum;
                 currentProcess.remainingTime -= quantum;
                 queue.add(currentProcess); // Re-add the process with updated remaining time

@@ -1,7 +1,9 @@
+package exp5;
+
 import java.util.*;
 
 class Process {
-    int pid; // Process ID
+    int pid; // exp5.Process ID
     int burstTime;
     int waitingTime;
     int turnaroundTime;
@@ -22,7 +24,7 @@ public class NonPreemptiveSJF {
         Process[] processes = new Process[n];
 
         for (int i = 0; i < n; i++) {
-            System.out.print("Enter burst time for Process " + (i + 1) + ": ");
+            System.out.print("Enter burst time for exp5.Process " + (i + 1) + ": ");
             int bt = sc.nextInt();
             processes[i] = new Process(i + 1, bt);
         }
