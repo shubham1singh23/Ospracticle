@@ -1,0 +1,62 @@
+### a) Display OS version, release number, kernel version
+
+```
+sh
+CopyEdit
+uname -a
+cat /etc/os-release
+
+```
+
+---
+
+### b) Display current logged in user and log name
+
+```
+sh
+CopyEdit
+whoami
+who
+
+```
+
+---
+
+### c) Display current shell, home directory, operating system type, current path setting, and current working directory
+
+```
+sh
+CopyEdit
+echo $SHELL
+echo $HOME
+uname
+echo $PATH
+pwd
+
+```
+
+---
+
+### d) Display top 10 processes in descending order (by CPU usage)
+
+```
+sh
+CopyEdit
+ps -eo pid,ppid,cmd,%cpu,%mem --sort=-%cpu | head -n 11
+
+```
+
+---
+
+### e) Display processes with highest memory usage
+
+```
+sh
+CopyEdit
+ps -eo pid,ppid,cmd,%mem --sort=-%mem | head -n 6
+
+```
+
+# 
+
+#
