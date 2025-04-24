@@ -1,0 +1,13 @@
+mkdir foldername
+cd folderfilename
+cat > hello.txt
+cat hello.txt
+ls
+ls -l
+sudo chown newuser filename
+sudo adduser username
+chmod 743 file.txt
+sudo groupadd groupname
+sudo usermod -aG groupname username
+sudo chgrp groupname filename
+ps
