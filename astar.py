@@ -25,3 +25,14 @@ def astar(graph, start, goal, h):
                 parent[nei] = node
 
     return None
+
+    graph = {
+    'A': [('B', 1), ('C', 2)],
+    'B': [('D', 2)],
+    'C': [('D', 1)],
+    'D': []
+}
+
+h = {'A':3, 'B':2, 'C':1, 'D':0}
+
+print(astar(graph, 'A', 'D', h))
