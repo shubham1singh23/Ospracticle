@@ -1,36 +1,41 @@
 from collections import deque
 
-# Define initial state
-start = ('A', 'B', False, False)  
-goal = True  # has_banana = True
+# Positions (line: 0 → 4)
+positions = [0, 1, 2, 3, 4]
+banana_pos = 4
+
+start = (0, 2, False, False)  # (monkey, box, on_box, has_banana)
 
 def get_next_states(state):
-    m_pos, b_pos, on_box, has_banana = state
-    states = []
+    m, b, on_box, has_banana = state
+    next_states = []
 
     if has_banana:
         return []
 
-    # Walk
-    for pos in ['A', 'B', 'C']:
-        if pos != m_pos and not on_box:
-            states.append((pos, b_pos, False, False))
+    # Walk (left or right)
+    if not on_box:
+        if m - 1 in positions:
+            next_states.append((m - 1, b, False, False))
+        if m + 1 in positions:
+            next_states.append((m + 1, b, False, False))
 
     # Push box
-    if m_pos == b_pos and not on_box:
-        for pos in ['A', 'B', 'C']:
-            if pos != m_pos:
-                states.append((pos, pos, False, False))
+    if m == b and not on_box:
+        if m - 1 in positions:
+            next_states.append((m - 1, b - 1, False, False))
+        if m + 1 in positions:
+            next_states.append((m + 1, b + 1, False, False))
 
     # Climb box
-    if m_pos == b_pos and not on_box:
-        states.append((m_pos, b_pos, True, False))
+    if m == b and not on_box:
+        next_states.append((m, b, True, False))
 
     # Grasp banana
-    if m_pos == 'C' and on_box:
-        states.append((m_pos, b_pos, True, True))
+    if m == banana_pos and on_box:
+        next_states.append((m, b, True, True))
 
-    return states
+    return next_states
 
 
 def bfs(start):
@@ -45,11 +50,11 @@ def bfs(start):
 
         visited.add(state)
 
-        if state[3] == True:
+        if state[3]:  # has banana
             return path + [state]
 
-        for next_state in get_next_states(state):
-            queue.append((next_state, path + [state]))
+        for nxt in get_next_states(state):
+            queue.append((nxt, path + [state]))
 
     return None
 
